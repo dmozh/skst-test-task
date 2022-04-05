@@ -1,0 +1,4 @@
+.git
+.cache
+.log
+/stock-chart-demo/node_modules/

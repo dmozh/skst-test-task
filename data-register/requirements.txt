@@ -1,0 +1,6 @@
+pydantic~=1.9.0
+python-dotenv
+asyncpg
+sqlalchemy
+redis~=4.2.1
+aio-pika

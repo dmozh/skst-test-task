@@ -1,0 +1,10 @@
+pydantic~=1.9.0
+python-dotenv
+asyncpg
+sqlalchemy
+redis
+fastapi
+uvicorn
+websockets
+gunicorn
+redis

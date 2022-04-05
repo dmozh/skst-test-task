@@ -1,0 +1,5 @@
+/.idea/
+/front-web-app/stock-chart-demo/node_modules/
+/back-web-app/logs/
+/data-register/src/logs/
+/data-generator/src/logs/
