@@ -3,17 +3,15 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from .api import router, ws_prices
 
-
+# главный объект приложения
 app = FastAPI()
 
+# ориджины, поставил звезду потому что это дев
 origins = [
-    "http://localhost",
-    "http://localhost:9000",
-    "http://localhost:8080",
-    "http://192.168.0.106",
-    "http://192.168.0.106:8080",
+    "*"
 ]
 
+# навешиваем мидлваре
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
@@ -22,6 +20,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.add_api_websocket_route("/api/prices/{product}/ws", ws_prices)
+# В общем история такая, роутер не умеет работать с вебсокетами
+# поэтому костылек
+app.add_api_websocket_route("/api/ws/prices/{product}/", ws_prices)
 
 app.include_router(router)

@@ -6,7 +6,7 @@ from typing import Optional, List
 from datetime import datetime
 
 from ..services import PriceService
-from ..models import PricesModel
+from ..models import PricesModel, TickersModel
 from ..logger import log
 
 router = APIRouter(
@@ -14,9 +14,16 @@ router = APIRouter(
 )
 
 
+@router.get('/tickers', response_model=TickersModel)
+async def get_tickers(
+        service: PriceService = Depends()
+):
+    return await service.get_tickers()
+
+
 @router.get('/{product}', response_model=List[PricesModel])
 async def get_history_product(
-        limit: Optional[int] = None,
+        limit: Optional[int] = 600,
         product: Optional[str] = None,
         start_dt: Optional[datetime] = None,
         end_dt: Optional[datetime] = None,
@@ -33,7 +40,7 @@ async def get_history_product(
 
 @router.get('/', response_model=List[PricesModel])
 async def get_history_all_products(
-        limit: Optional[int] = 3600,
+        limit: Optional[int] = 600,
         start_dt: Optional[datetime] = None,
         end_dt: Optional[datetime] = None,
         service: PriceService = Depends(),

@@ -1,6 +1,13 @@
 from pydantic import BaseModel, UUID4
-from typing import Optional
+from typing import List
 from datetime import datetime
+
+
+class TickersModel(BaseModel):
+    products: List[str]
+
+    class Config:
+        orm_mode = True
 
 
 class PricesModel(BaseModel):
@@ -9,6 +16,7 @@ class PricesModel(BaseModel):
     changed_dt: datetime
     price: int
     price_trend: int
+    old_price: int
 
     class Config:
         orm_mode = True

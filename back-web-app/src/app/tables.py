@@ -13,13 +13,4 @@ class Prices(DeclarativeBase):
     changed_dt = Column(DateTime)
     price = Column(Integer)
     price_trend = Column(Integer)
-
-
-class PricesHistory(DeclarativeBase):
-    __tablename__ = 'prices_history'
-
-    id = Column(UUID, primary_key=True, nullable=False)
-    product = Column(VARCHAR(30))
-    changed_dt = Column(DateTime)
-    price = Column(Integer)
-    price_trend = Column(Integer)
+    old_price = Column(Integer)

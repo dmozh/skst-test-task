@@ -2,7 +2,7 @@ from pydantic import BaseSettings
 
 
 class Settings(BaseSettings):
-    DEBUG = "false"
+    DEBUG = False
 
     server_host = ''
     server_port = ''

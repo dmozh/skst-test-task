@@ -1,1 +1,1 @@
-from .prices import PricesModel
+from .prices import PricesModel, TickersModel
